@@ -5,6 +5,7 @@ body {
     padding: 0;
     color: #333;
     line-height: 1.6;
+    background: #f4f4f4;
   }
   
   h1, h2, h3 {
@@ -16,16 +17,22 @@ body {
     text-decoration: none;
     color: inherit;
   }
+  
   /* Header Styles */
-.main-header {
+  .main-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     padding: 10px 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    transition: background 0.3s ease;
+  }
+  
+  .main-header.scrolled {
+    background: rgba(255, 111, 97, 0.95); /* Change header color on scroll */
   }
   
   .header-content {
@@ -40,6 +47,11 @@ body {
     font-size: 1.8rem;
     color: #333;
     margin: 0;
+    transition: color 0.3s ease;
+  }
+  
+  .main-header.scrolled .logo h1 {
+    color: #fff; /* Change logo color on scroll */
   }
   
   .nav-links {
@@ -53,15 +65,16 @@ body {
     padding: 8px 16px;
     border-radius: 5px;
     font-size: 0.9rem;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
   }
   
   .nav-links .btn:hover {
     background: #e65a50;
+    transform: translateY(-3px);
   }
   
-  /* Hero Section */
-  .hero {
+ /* Hero Section */
+.hero {
     position: relative;
     height: 100vh;
     overflow: hidden;
@@ -89,6 +102,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: brightness(0.7); /* Darken the background images */
   }
   
   .carousel-control {
@@ -101,6 +115,11 @@ body {
     padding: 10px;
     cursor: pointer;
     font-size: 2rem;
+    transition: background 0.3s ease;
+  }
+  
+  .carousel-control:hover {
+    background: rgba(0, 0, 0, 0.8);
   }
   
   .carousel-control.prev {
@@ -111,58 +130,16 @@ body {
     right: 10px;
   }
   
-  .hero-content {
+  .hero-overlay {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }  
- /* Carousel Styles */
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .carousel-item {
-    min-width: 100%;
-    height: 100vh;
-    position: relative;
-  }
-  
-  .carousel-item img {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better contrast */
+    z-index: 1;
   }
   
-  .carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 2rem;
-  }
-  
-  .carousel-control.prev {
-    left: 10px;
-  }
-  
-  .carousel-control.next {
-    right: 10px;
-  }
-  
-  /* Hero Content */
   .hero-content {
     position: absolute;
     top: 50%;
@@ -171,52 +148,76 @@ body {
     text-align: center;
     color: #fff;
     z-index: 2;
+    width: 90%;
+    max-width: 800px;
   }
   
   .hero-content h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    animation: fadeInDown 1s ease;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Add shadow to text */
   }
   
   .hero-content p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    animation: fadeInUp 1s ease;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Add shadow to text */
   }
   
   .cta-buttons .btn {
     background: #ff6f61;
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 5px;
     margin: 0 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .cta-buttons .btn:hover {
+    background: #e65a50;
+    transform: translateY(-3px);
   }
   
   .cta-buttons .btn-outline {
     background: transparent;
     border: 2px solid #fff;
+    transition: background 0.3s ease, color 0.3s ease;
   }
-  .cta-buttons .btn {
-    background: #ff6f61;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin: 0 10px;
+  
+  .cta-buttons .btn-outline:hover {
+    background: #fff;
+    color: #ff6f61;
   }
+  
+ 
   
   .cta-buttons .btn-outline {
     background: transparent;
     border: 2px solid #fff;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .cta-buttons .btn-outline:hover {
+    background: #fff;
+    color: #ff6f61;
   }
   
   /* Features Section */
   .features {
     padding: 50px 20px;
     text-align: center;
+    background: #fff;
   }
   
   .features h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+    color: #333;
   }
   
   .feature-grid {
@@ -226,58 +227,75 @@ body {
   }
   
   .feature-item {
-    background: #f9f9f9;
+    background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   }
   
   /* Gallery Section */
-.gallery {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.gallery h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.gallery-item img {
-  width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item img:hover {
-  transform: scale(1.05);
-}
-
-.load-more {
-  background: #ff6f61;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 20px;
-  cursor: pointer;
-}
-  /* Testimonials Section */
-.testimonials {
+  .gallery {
     padding: 50px 20px;
     text-align: center;
     background: #f9f9f9;
   }
   
+  .gallery h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .gallery-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .load-more {
+    background: #ff6f61;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .load-more:hover {
+    background: #e65a50;
+    transform: translateY(-3px);
+  }
+  
+  /* Testimonials Section */
+  .testimonials {
+    padding: 50px 20px;
+    text-align: center;
+    background: #fff;
+  }
+  
   .testimonials h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+    color: #333;
   }
   
   .testimonial-grid {
@@ -291,16 +309,25 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .testimonial-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   }
   
   .testimonial-item p {
     font-style: italic;
+    color: #555;
   }
   
   .testimonial-item .author {
     font-weight: bold;
     margin-top: 10px;
+    color: #ff6f61;
   }
+  
   /* Footer */
   footer {
     background: #333;
@@ -311,4 +338,46 @@ body {
   
   footer p {
     margin: 0;
+  }
+  
+  /* Animations */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Scroll Animation */
+  [data-aos] {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  [data-aos="fade-up"] {
+    transform: translateY(20px);
+  }
+  
+  [data-aos="fade-down"] {
+    transform: translateY(-20px);
+  }
+  
+  [data-aos="fade-in"] {
+    opacity: 1;
+    transform: translateY(0);
   }
