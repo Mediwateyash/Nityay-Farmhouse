@@ -71,3 +71,50 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     showItems(galleryItems, 'gallery-grid');
     showItems(testimonialItems, 'testimonial-grid');
   });
+  // Book Now Modal Functionality
+const bookNowModal = document.getElementById('bookNowModal');
+const closeModal = document.querySelector('.close');
+const enquiryForm = document.getElementById('enquiryForm');
+
+// Open modal when "Book Now" is clicked
+document.querySelectorAll('a[href="#booking"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    bookNowModal.style.display = 'flex';
+  });
+});
+
+// Close modal when close button is clicked
+closeModal.addEventListener('click', () => {
+  bookNowModal.style.display = 'none';
+});
+
+// Close modal when clicking outside the modal
+window.addEventListener('click', (e) => {
+  if (e.target === bookNowModal) {
+    bookNowModal.style.display = 'none';
+  }
+});
+
+// Handle form submission
+enquiryForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Get form data
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const date = document.getElementById('date').value;
+  const stayType = document.getElementById('stayType').value;
+
+  // Create WhatsApp message
+  const message = `Hello, I would like to make a booking at Nityay Farmhouse.\n\nName: ${name}\nPhone: ${phone}\nPreferred Date: ${date}\nStay Type: ${stayType}`;
+
+  // Encode message for WhatsApp URL
+  const encodedMessage = encodeURIComponent(message);
+
+  // Redirect to WhatsApp
+  window.location.href = `https://wa.me/918799903365?text=${encodedMessage}`;
+
+  // Close modal
+  bookNowModal.style.display = 'none';
+});

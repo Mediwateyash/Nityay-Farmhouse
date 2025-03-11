@@ -16,7 +16,7 @@
       <nav class="nav-links">
         <a href="#booking" class="btn">Book Now</a>
         <a href="#features" class="btn">Explore Features</a>
-        <a href="#contact" class="btn">Contact Us</a>
+        <a href="#detail" class="btn">Contact Us</a>
       </nav>
     </div>
   </header>
@@ -133,10 +133,23 @@
     <div class="gallery-grid">
       <!-- Add your images here -->
       <div class="gallery-item"><img src="/Nityay-Farmhouse/img/4.jpg" alt="Farmhouse Image 1"></div>
-      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/5.jpg" alt="Farmhouse Image 2"></div>
-      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/pool.png" alt="Farmhouse Image 3"></div>
-      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/7.jpg" alt="Farmhouse Image 3"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/5.jpg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/pool.png" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/7.jpg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (1).jpeg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (10).jpeg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (2).jpeg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (3).jpeg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (4).jpeg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (5).jpeg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (6).jpeg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (7).jpeg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (8).jpeg" alt="Farmhouse Image 1"></div>
+      <div class="gallery-item"><img src="/Nityay-Farmhouse/img/8 (9).jpeg (9).jpeg" alt="Farmhouse Image 1"></div>
+      
+
     </div>
+    <button class="load-more" onclick="loadMoreGallery()">Load More</button>
   </section>
 
   <!-- Testimonials Section -->
@@ -198,6 +211,7 @@
 
 <!-- Contact Us Section -->
 <section class="contact">
+  <div id="detail"></div>
   <h2>Contact Us</h2>
   <div class="contact-content">
     <div class="contact-details">
@@ -219,7 +233,35 @@
     </div>
   </div>
 </section>
-
+<!-- Book Now Modal -->
+<div id="bookNowModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Make an Enquiry</h2>
+    <form id="enquiryForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="date">Preferred Date:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      <div class="form-group">
+        <label for="stayType">Stay Type:</label>
+        <select id="stayType" name="stayType" required>
+          <option value="Overnight">Overnight</option>
+          <option value="Day">Day</option>
+        </select>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+</div>
 <!-- Footer -->
 <footer>
   <div class="footer-content">
