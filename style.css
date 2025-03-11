@@ -520,20 +520,51 @@ footer a:hover {
 
 .modal-content .btn:hover {
   background: #e65a50;
-}.load-more {
-  background: #ff6f61;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
+}
+/* Confirmed Members Dropdown (Read-Only) */
+#confirmedMembers {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+  background: #f9f9f9; /* Light gray background for read-only */
+  color: #555; /* Gray text for read-only */
+  cursor: not-allowed; /* Show not-allowed cursor */
 }
 
+#confirmedMembers:focus {
+  outline: none; /* Remove outline on focus */
+}
 .load-more:hover {
   background: #e65a50;
   transform: translateY(-3px);
+}
+/* Organised by Section */
+.organised-by {
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+.organised-by a {
+  color: #ff6f61; /* Coral color for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.organised-by a:hover {
+  color: #e65a50; /* Darker coral on hover */
+}
+
+/* Bottom Section */
+.mitra-mandal {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: #333;
 }
   /* Animations */
   @keyframes fadeInDown {
